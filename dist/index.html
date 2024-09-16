@@ -30,8 +30,8 @@
         .large-logo {
             display: block;
             margin: 10px auto 20px;
-            width: auto;
-            height: 180px;
+            max-width: 100%; /* Make sure logo scales with container width */
+            height: auto; /* Maintain aspect ratio */
         }
 
         .header {
@@ -65,13 +65,14 @@
 
         .price-list {
             display: flex;
-            justify-content: space-around;
+            flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+            justify-content: space-between;
             margin: 20px 0;
             gap: 20px;
         }
 
         .card {
-            flex: 1;
+            flex: 1 1 calc(50% - 20px); /* Two cards per row with gap included */
             background-color: #fff;
             padding: 20px;
             border-radius: 15px;
@@ -79,6 +80,7 @@
             transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
             overflow: hidden;
+            margin-bottom: 20px;
         }
 
         .card:hover {
@@ -105,7 +107,8 @@
             margin-bottom: 10px;
             color: #ff5722;
         }
-.price-original {
+
+        .price-original {
             font-size: 14px;
             font-weight: bold;
             margin-bottom: 10px;
@@ -150,6 +153,82 @@
             padding: 10px 0;
             border-top: 1px solid #eee;
         }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+
+            .content h2 {
+                font-size: 20px;
+            }
+
+            .card {
+                flex: 1 1 100%; /* One card per row on small screens */
+                margin-bottom: 10px;
+            }
+
+            .price-list {
+                flex-direction: column; /* Stack cards vertically */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .large-logo {
+                height: 120px; /* Adjust logo size for very small screens */
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 18px;
+            }
+
+            .header p {
+                font-size: 12px;
+            }
+
+            .content h2 {
+                font-size: 18px;
+            }
+
+            .card {
+                padding: 15px;
+                margin-bottom: 10px;
+            }
+
+            .card img {
+                height: 200px; /* Adjust image size for very small screens */
+            }
+
+            .price {
+                font-size: 16px;
+            }
+
+            .price-original {
+                font-size: 12px;
+            }
+
+            .benefits p {
+                font-size: 12px;
+            }
+
+            .button-container a {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .footer {
+                font-size: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -171,7 +250,7 @@
                     <img src="https://share1.cloudhq-mkt3.net/0084af09be2af2.jpeg" alt="Fellowship Wild Card">
                     <h3>Fellowship Wild Card (FWC 🥇)</h3>
                     <div class="price">50% Discount: ₹8,000</div>
-<div class="price-original">Original Price: ₹16,000</div>
+                    <div class="price-original">Original Price: ₹16,000</div>
                     <div class="benefits">
                         <p><strong>Benefits:</strong></p>
                         <p>✔ Direct entry—No tests or interviews!</p>
@@ -186,7 +265,7 @@
                     <img src="https://share1.cloudhq-mkt3.net/3831d38f97b042.png" alt="Junior Fellowship Wild Card">
                     <h3>Junior Fellowship Wild Card (JFWC 🥈)</h3>
                     <div class="price">50% Discount: ₹6,000</div>
-<div class="price-original">Original Price: ₹12,000</div>
+                    <div class="price-original">Original Price: ₹12,000</div>
                     <div class="benefits">
                         <p><strong>Benefits:</strong></p>
                         <p>✔ Direct entry to Junior Program—No tests!</p>
